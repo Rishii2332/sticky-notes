@@ -9,15 +9,41 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "sticky-notes.helloWorld",
-        "title": "Hello World"
+        "command": "inline-notes.addNote",
+        "title": "Inline Notes: Add Note"
+      },
+      {
+        "command": "inline-notes.editNote",
+        "title": "Inline Notes: Edit Note"
+      },
+      {
+        "command": "inline-notes.deleteNote",
+        "title": "Inline Notes: Delete Note"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "inline-notes.addNote",
+        "key": "ctrl+alt+n",
+        "mac": "cmd+alt+n",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "inline-notes.addNote",
+          "group": "1_modification"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
